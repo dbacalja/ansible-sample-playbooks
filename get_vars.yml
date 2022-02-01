@@ -1,6 +1,14 @@
 ---
-- name: Get vars
+- name: Update web servers
+  hosts: webservers
+  remote_user: root
 
   tasks:
-  - name: Get variables that contain SH in their name
-    debug: msg="{{ lookup('varnames', 'SH')}}"
+  - name: Ensure apache is at the latest version
+    ansible.builtin.yum:
+      name: httpd
+      state: latest
+  - name: Write the apache config file
+    ansible.builtin.template:
+      src: /srv/httpd.j2
+      dest: /etc/httpd.conf
