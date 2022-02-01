@@ -1,6 +1,6 @@
 ---
+- name: Get vars
 
-- name: Get variables
   tasks:
-    - name: Show variables with 'SH' in their names
-      debug: msg="{{ lookup('varnames', 'SH')}}"
+  - name: Get variables that contain SH in their name
+    debug: msg="{{ lookup('varnames', 'SH')}}"
