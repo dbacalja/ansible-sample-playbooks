@@ -4,4 +4,5 @@
   hosts: all
   tasks:
     - name: Show variables with 'SH' in their names
-    debug: msg="{{ lookup('varnames', 'SH')}}"
+    ansible.builtin.varnames:
+      debug: msg="{{ lookup('varnames', 'SH')}}"
